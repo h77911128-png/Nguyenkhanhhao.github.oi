@@ -67,7 +67,7 @@
             justify-content: center;
         }
 
-        /* Khu vực nút hệ thống Đăng nhập / Đăng ký ẩn gọn bên phải */
+        /* Khu vực nút hệ thống Đăng nhập / Đăng ký */
         .auth-zone { text-align: right; max-width: 650px; margin: 0 auto 10px auto; padding-right: 5px; }
         .auth-zone a { color: #94a3b8; text-decoration: none; font-size: 13px; cursor: pointer; transition: 0.2s; }
         .auth-zone a:hover { color: #38bdf8; }
@@ -108,7 +108,7 @@
         .mod-name { font-size: 15px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0; }
         .mod-desc { font-size: 11px; color: #64748b; margin: 0 0 12px 0; font-weight: 500; }
         
-        /* Cụm nút hành động bên dưới mỗi thẻ */
+        /* Cụm nút hành động bên dưới mỗi thẻ (Đã tối ưu gọn gàng) */
         .mod-actions { display: flex; gap: 8px; }
         .btn-download {
             flex: 1;
@@ -127,21 +127,6 @@
             gap: 6px;
         }
         .btn-download:hover { opacity: 0.9; transform: translateY(-1px); }
-        .btn-key {
-            background: #f1f5f9;
-            color: #475569;
-            border: 1px solid #e2e8f0;
-            padding: 0 14px;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .btn-key:hover { background: #e2e8f0; color: #0f172a; }
 
         /* Hộp thoại thông báo trúng thưởng ngẫu nhiên */
         .result-box {
@@ -192,51 +177,60 @@
     <!-- Khung Danh sách mục -->
     <div class="list-container">
         
-        <!-- Mục số 1: CHẤP TỐ ANDROID -->
+        <!-- MỤC 1: PHÁT ACC LQ FREE (NHẬP KHO MỖI NGÀY) -->
+        <div class="mod-item">
+            <img class="mod-avatar" src="https://garena.vn" onerror="this.src='https://placehold.co'">
+            <div class="mod-info">
+                <div class="mod-name" style="color: #e11d48;">PHÁT ACC LQ FREE (NHẬP KHO MỖI NGÀY)</div>
+                <div class="mod-desc" style="color: #b45309; font-weight: bold;">Mỗi người nhận 1 acc ngẫu nhiên siêu VIP hoàn toàn miễn phí</div>
+                <div class="mod-actions">
+                    <button class="btn-download" style="background: linear-gradient(90deg, #f43f5e, #e11d48);" onclick="quayRandomAcc('Sự kiện Phát ACC LQ Free')">🎁 Nhận ACC Ngẫu Nhiên</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mục số 2: CHẤP TỐ ANDROID -->
         <div class="mod-item">
             <img class="mod-avatar" src="https://imgur.com" onerror="this.src='https://placehold.co'">
             <div class="mod-info">
                 <div class="mod-name">CHẤP TỐ ANDROID</div>
-                <div class="mod-desc">10 vé / 24h ( 1 game k được dồn quá 3 vé )</div>
+                <div class="mod-desc">10 vé / 24h ( 1 game k được dồn quá 3 vế )</div>
                 <div class="mod-actions">
-                    <button class="btn-download" onclick="quayRandomAcc('Mục Chấp Tố Android')">📥 Tải Xuống</button>
-                    <button class="btn-key" onclick="alert('Chức năng nhận mã bản quyền đang bảo trì!')">🔑 Get Key</button>
+                    <button class="btn-download" onclick="alert('Vui lòng tải qua nút Phát ACC LQ Free ở trên!')">📥 Tải Xuống</button>
                 </div>
             </div>
         </div>
 
-        <!-- Mục số 2: MAP NTD MOD -->
+        <!-- Mục số 3: MAP NTD MOD -->
         <div class="mod-item">
             <img class="mod-avatar" src="https://imgur.com" onerror="this.src='https://placehold.co'">
             <div class="mod-info">
                 <div class="mod-name">MAP NTD MOD</div>
                 <div class="mod-desc">HACK MAP - MOD FULL SKIN 3S KHÔNG TRẬN ẢO</div>
                 <div class="mod-actions">
-                    <button class="btn-download" onclick="quayRandomAcc('Mục Map NTD Mod')">📥 Tải Xuống</button>
-                    <button class="btn-key" onclick="alert('Chức năng nhận mã bản quyền đang bảo trì!')">🔑 Get Key</button>
+                    <button class="btn-download" onclick="alert('Vui lòng tải qua nút Phát ACC LQ Free ở trên!')">📥 Tải Xuống</button>
                 </div>
             </div>
         </div>
 
-        <!-- Mục số 3: IOS CHẤP TỐ -->
+        <!-- Mục số 4: IOS CHẤP TỐ -->
         <div class="mod-item">
             <img class="mod-avatar" src="https://imgur.com" onerror="this.src='https://placehold.co'">
             <div class="mod-info">
                 <div class="mod-name">IOS CHẤP TỐ</div>
                 <div class="mod-desc">15 vé / 24h - MOD FULL SKIN 3S KHÔNG LỖI</div>
                 <div class="mod-actions">
-                    <button class="btn-download" onclick="quayRandomAcc('Mục IOS Chấp Tố')">📥 Tải Xuống</button>
-                    <button class="btn-key" onclick="alert('Chức năng nhận mã bản quyền đang bảo trì!')">🔑 Get Key</button>
+                    <button class="btn-download" onclick="alert('Vui lòng tải qua nút Phát ACC LQ Free ở trên!')">📥 Tải Xuống</button>
                 </div>
             </div>
         </div>
 
-        <!-- Khung hiển thị tài khoản khi bấm nút Tải xuống (Random) -->
         <div id="ketQuaRandom" class="result-box"></div>
     </div>
 
-    <!-- Hộp thoại Form Điền Đăng ký / Đăng nhập -->
     <div id="authModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            
+            <h3 id="modalTitle">Đăng ký thành viên</h3>
+            <div class="form-group">
+                <label>Tên tài khoản:</label>
