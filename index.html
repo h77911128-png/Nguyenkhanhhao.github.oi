@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Acc Liên Quân</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background-color: #0f172a; color: #f8fafc; padding-top: 50px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background-color: #0f172a; color: #f8fafc; padding-top: 80px; margin: 0; }
+        
+        /* Phần Đăng nhập / Đăng ký ở góc trái trên cùng */
+        .auth-buttons { position: absolute; top: 20px; left: 20px; font-size: 14px; }
+        .auth-buttons a { color: #38bdf8; text-decoration: none; font-weight: 500; transition: 0.2s; }
+        .auth-buttons a:hover { color: #7dd3fc; text-decoration: underline; }
+        .auth-buttons span { color: #64748b; margin: 0 5px; }
+
         .container { max-width: 500px; margin: 0 auto; background: #1e293b; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; }
         h2 { color: #38bdf8; margin-bottom: 5px; }
         button { background-color: #0284c7; color: white; border: none; padding: 15px 35px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; margin-top: 20px; }
@@ -17,6 +24,13 @@
     </style>
 </head>
 <body>
+
+<!-- Nút Đăng nhập / Đăng ký góc trái -->
+<div class="auth-buttons">
+    <a href="#" onclick="alert('Tính năng Đăng nhập đang được phát triển!')">Đăng nhập</a>
+    <span>/</span>
+    <a href="#" onclick="alert('Tính năng Đăng ký đang được phát triển!')">Đăng ký</a>
+</div>
 
 <div class="container">
     <h2>🎉 VÒNG QUAY RANDOM ACC LQ 🎉</h2>
