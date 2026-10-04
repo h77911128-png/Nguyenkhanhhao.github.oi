@@ -72,7 +72,7 @@
         .auth-zone a { color: #94a3b8; text-decoration: none; font-size: 13px; cursor: pointer; transition: 0.2s; }
         .auth-zone a:hover { color: #38bdf8; }
 
-        /* Khung danh sách các Mục sản phẩm */
+        /* Khung danh sách Mục sản phẩm */
         .list-container {
             max-width: 650px;
             margin: 0 auto;
@@ -83,39 +83,35 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
-        /* Từng thẻ hàng hóa / Mod Item */
+        /* Thẻ Sự Kiện Phát ACC LQ FREE chính */
         .mod-item {
             background: #ffffff;
             color: #1e293b;
             border-radius: 18px;
             padding: 16px;
-            margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 16px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             text-align: left;
         }
-        .mod-item:last-child { margin-bottom: 0; }
         .mod-avatar {
-            width: 54px;
-            height: 54px;
+            width: 58px;
+            height: 58px;
             border-radius: 12px;
             object-fit: cover;
-            border: 2px solid #f1f5f9;
+            border: 2px solid #e2e8f0;
         }
         .mod-info { flex: 1; }
-        .mod-name { font-size: 15px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0; }
-        .mod-desc { font-size: 11px; color: #64748b; margin: 0 0 12px 0; font-weight: 500; }
+        .mod-name { font-size: 15px; font-weight: 700; color: #e11d48; margin: 0 0 4px 0; }
+        .mod-desc { font-size: 11px; color: #b45309; margin: 0 0 12px 0; font-weight: bold; }
         
-        /* Cụm nút hành động bên dưới mỗi thẻ (Đã tối ưu gọn gàng) */
-        .mod-actions { display: flex; gap: 8px; }
         .btn-download {
-            flex: 1;
-            background: linear-gradient(90deg, #6366f1, #a855f7);
+            width: 100%;
+            background: linear-gradient(90deg, #f43f5e, #e11d48);
             color: white;
             border: none;
-            padding: 10px;
+            padding: 11px;
             border-radius: 10px;
             font-size: 13px;
             font-weight: 600;
@@ -128,7 +124,7 @@
         }
         .btn-download:hover { opacity: 0.9; transform: translateY(-1px); }
 
-        /* Hộp thoại thông báo trúng thưởng ngẫu nhiên */
+        /* Hộp thoại hiển thị tài khoản khi trúng */
         .result-box {
             margin-top: 15px;
             padding: 15px;
@@ -177,60 +173,81 @@
     <!-- Khung Danh sách mục -->
     <div class="list-container">
         
-        <!-- MỤC 1: PHÁT ACC LQ FREE (NHẬP KHO MỖI NGÀY) -->
+        <!-- MỤC DUY NHẤT: PHÁT ACC LQ FREE (Đã sửa hình nền Liên Quân chuẩn nét) -->
         <div class="mod-item">
-            <img class="mod-avatar" src="https://garena.vn" onerror="this.src='https://placehold.co'">
+            <img class="mod-avatar" src="https://googleusercontent.com" onerror="this.src='https://placehold.co'">
             <div class="mod-info">
-                <div class="mod-name" style="color: #e11d48;">PHÁT ACC LQ FREE (NHẬP KHO MỖI NGÀY)</div>
-                <div class="mod-desc" style="color: #b45309; font-weight: bold;">Mỗi người nhận 1 acc ngẫu nhiên siêu VIP hoàn toàn miễn phí</div>
-                <div class="mod-actions">
-                    <button class="btn-download" style="background: linear-gradient(90deg, #f43f5e, #e11d48);" onclick="quayRandomAcc('Sự kiện Phát ACC LQ Free')">🎁 Nhận ACC Ngẫu Nhiên</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mục số 2: CHẤP TỐ ANDROID -->
-        <div class="mod-item">
-            <img class="mod-avatar" src="https://imgur.com" onerror="this.src='https://placehold.co'">
-            <div class="mod-info">
-                <div class="mod-name">CHẤP TỐ ANDROID</div>
-                <div class="mod-desc">10 vé / 24h ( 1 game k được dồn quá 3 vế )</div>
-                <div class="mod-actions">
-                    <button class="btn-download" onclick="alert('Vui lòng tải qua nút Phát ACC LQ Free ở trên!')">📥 Tải Xuống</button>
-                </div>
+                <div class="mod-name">PHÁT ACC LQ FREE (NHẬP KHO MỖI NGÀY)</div>
+                <div class="mod-desc">Mỗi người nhận 1 acc ngẫu nhiên siêu VIP hoàn toàn miễn phí</div>
+                <button class="btn-download" onclick="quayRandomAcc('Sự kiện Phát ACC LQ Free')">🎁 Nhận ACC Ngẫu Nhiên</button>
             </div>
         </div>
 
-        <!-- Mục số 3: MAP NTD MOD -->
-        <div class="mod-item">
-            <img class="mod-avatar" src="https://imgur.com" onerror="this.src='https://placehold.co'">
-            <div class="mod-info">
-                <div class="mod-name">MAP NTD MOD</div>
-                <div class="mod-desc">HACK MAP - MOD FULL SKIN 3S KHÔNG TRẬN ẢO</div>
-                <div class="mod-actions">
-                    <button class="btn-download" onclick="alert('Vui lòng tải qua nút Phát ACC LQ Free ở trên!')">📥 Tải Xuống</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mục số 4: IOS CHẤP TỐ -->
-        <div class="mod-item">
-            <img class="mod-avatar" src="https://imgur.com" onerror="this.src='https://placehold.co'">
-            <div class="mod-info">
-                <div class="mod-name">IOS CHẤP TỐ</div>
-                <div class="mod-desc">15 vé / 24h - MOD FULL SKIN 3S KHÔNG LỖI</div>
-                <div class="mod-actions">
-                    <button class="btn-download" onclick="alert('Vui lòng tải qua nút Phát ACC LQ Free ở trên!')">📥 Tải Xuống</button>
-                </div>
-            </div>
-        </div>
-
+        <!-- Vùng hiện tài khoản rút được -->
         <div id="ketQuaRandom" class="result-box"></div>
     </div>
 
+    <!-- Khung Popup Form -->
     <div id="authModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <h3 id="modalTitle">Đăng ký thành viên</h3>
             <div class="form-group">
                 <label>Tên tài khoản:</label>
+                <input type="text" id="username" placeholder="Tối thiểu 5 ký tự...">
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu:</label>
+                <input type="password" id="password" placeholder="Có chữ Hoa, thường và dấu _">
+                <div id="validationError" class="form-error"></div>
+            </div>
+            <button class="btn-submit" id="btnSubmit" onclick="xuLyForm()">Xác nhận</button>
+        </div>
+    </div>
+
+<script>
+// KHO TÀI KHOẢN ACC RANDOM CỦA BẠN (Gồm 3 acc bạn đã nạp)
+let khoAcc = [
+    { tk: "cuong6bbn", mk: "cuongcvbn123" },
+    { tk: "hoaianh2689", mk: "0584903919Anh" },
+    { tk: "daivipbnvn22", mk: "anhyasuo123" }
+];
+
+let currentAction = 'register';
+
+function openModal(action) {
+    currentAction = action;
+    document.getElementById("modalTitle").innerText = action === 'login' ? "Đăng nhập hệ thống" : "Đăng ký thành viên";
+    document.getElementById("btnSubmit").innerText = action === 'login' ? "Đăng nhập" : "Đăng ký ngay";
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("validationError").style.display = "none";
+    document.getElementById("authModal").style.display = "block";
+}
+
+function closeModal() { document.getElementById("authModal").style.display = "none"; }
+
+function xuLyForm() {
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value;
+    const errDiv = document.getElementById("validationError");
+    errDiv.style.display = "none";
+
+    if (user.length < 5) {
+        errDiv.innerText = "❌ Tên tài khoản phải từ 5 ký tự trở lên!";
+        errDiv.style.display = "block";
+        return;
+    }
+
+    if (!/[a-z]/.test(pass) || !/[A-Z]/.test(pass) || !/_/.test(pass)) {
+        errDiv.innerText = "❌ Mật khẩu cần có: chữ viết thường, viết hoa và dấu gạch dưới (_).";
+        errDiv.style.display = "block";
+        return;
+    }
+
+    alert(currentAction === 'register' ? "🎉 Đăng ký thành công!" : "🔓 Đăng nhập thành công!");
+    closeModal();
+}
+
+function quayRandomAcc(tenMuc) {
+    
