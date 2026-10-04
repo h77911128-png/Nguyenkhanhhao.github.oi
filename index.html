@@ -1,4 +1,4 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -26,15 +26,14 @@
     <div id="ketQua" class="result">
         <p><strong>👤 Tài khoản:</strong> <span id="txtTaiKhoan" style="color: #38bdf8; font-family: monospace; font-size: 18px;"></span></p>
         <p><strong>🔑 Mật khẩu:</strong> <span id="txtMatKhau" style="color: #f43f5e; font-family: monospace; font-size: 18px;"></span></p>
-        <p><strong>📝 Chi tiết:</strong> <span id="txtGhiChu"></span></p>
     </div>
     <p id="txtThongBao"></p>
 </div>
 
 <script>
-// KHO TÀI KHOẢN CỦA BẠN - Bạn muốn thêm nick nào cứ copy thêm dòng xuống dưới nhé
+// KHO TÀI KHOẢN CỦA BẠN (Đã bỏ phần note)
 let khoAcc = [
-    { tk: "cuong6bbn", mk: "cuongcvbn123", note: "Acc Liên Quân số 1" }
+    { tk: "cuong6bbn", mk: "cuongcvbn123" }
 ];
 
 function quayRandom() {
@@ -53,8 +52,17 @@ function quayRandom() {
 
     document.getElementById("txtTaiKhoan").innerText = accTrung.tk;
     document.getElementById("txtMatKhau").innerText = accTrung.mk;
-    document.getElementById("txtGhiChu").innerText = accTrung.note;
     resDiv.style.display = "block";
+
+    khoAcc.splice(randomIndex, 1);
+    thongBao.className = "success";
+    thongBao.innerText = `ℹ️ Đã lấy 1 acc. Trong kho còn lại: ${khoAcc.length} acc.`;
+}
+</script>
+
+</body>
+</html>
+
 
     khoAcc.splice(randomIndex, 1);
     thongBao.className = "success";
