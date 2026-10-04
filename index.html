@@ -96,7 +96,6 @@
             text-align: left;
         }
         
-        /* Khung chứa ảnh nhân vật theo yêu cầu - Đã tối ưu bo góc và kích thước */
         .mod-avatar {
             width: 58px;
             height: 58px;
@@ -132,14 +131,18 @@
         /* Hộp thoại thông báo trúng thưởng ngẫu nhiên */
         .result-box {
             margin-top: 15px;
-            padding: 15px;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 12px;
+            padding: 18px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid #22d3ee;
+            border-radius: 16px;
             display: none;
-            color: #e0f2fe;
-            font-size: 14px;
-            text-align: left;
+            font-size: 15px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        .text-error-custom {
+            color: #f43f5e;
+            font-weight: 600;
         }
 
         /* Giao diện Popup đăng ký / đăng nhập */
@@ -179,7 +182,6 @@
     <!-- Khung Danh sách mục -->
     <div class="list-container">
         
-        <!-- MỤC DUY NHẤT: Đã cập nhật ảnh nhân vật anime cực ngầu chạy link trực tiếp ổn định -->
         <div class="mod-item">
             <img class="mod-avatar" src="https://imgur.com" onerror="this.src='https://placehold.co'">
             <div class="mod-info">
@@ -189,7 +191,7 @@
             </div>
         </div>
 
-        <!-- Vùng hiển thị kết quả nick khi bấm nút -->
+        <!-- Vùng hiển thị kết quả nick hoặc thông báo hết acc -->
         <div id="ketQuaRandom" class="result-box"></div>
     </div>
 
@@ -246,4 +248,5 @@ function xuLyForm() {
     }
 
     if (!/[a-z]/.test(pass) || !/[A-Z]/.test(pass) || !/_/.test(pass)) {
+        errDiv.innerText = "❌ Mật khẩu cần có: chữ viết thường, viết hoa và dấu gạch dưới (_).";
         
