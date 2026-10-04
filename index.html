@@ -3,178 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Acc Liên Quân</title>
+    <title>NTDShare - Digital Hub</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background-color: #0f172a; color: #f8fafc; padding-top: 80px; margin: 0; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #090a0f 0%, #15102a 50%, #061626 100%); 
+            color: #f8fafc; 
+            margin: 0; 
+            padding: 20px 10px;
+            min-height: 100vh;
+        }
+
+        /* Top Header Giao diện mẫu */
+        .hub-header {
+            max-width: 650px;
+            margin: 0 auto 20px auto;
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hub-brand { display: flex; align-items: center; gap: 12px; }
+        .hub-icon {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            width: 36px;
+            height: 36px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+        }
+        .hub-title { text-align: left; }
+        .hub-title h1 { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.5px; }
+        .hub-title p { margin: 0; font-size: 10px; color: #94a3b8; text-transform: uppercase; }
         
-        /* Phần Đăng nhập / Đăng ký ở góc trái trên cùng */
-        .auth-buttons { position: absolute; top: 20px; left: 20px; font-size: 14px; }
-        .auth-buttons a { color: #38bdf8; text-decoration: none; font-weight: 500; transition: 0.2s; cursor: pointer; }
-        .auth-buttons a:hover { color: #7dd3fc; text-decoration: underline; }
-        .auth-buttons span { color: #64748b; margin: 0 5px; }
+        .hub-status { display: flex; align-items: center; gap: 10px; }
+        .status-badge {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+        .btn-refresh {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 8px;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-        .container { max-width: 500px; margin: 0 auto; background: #1e293b; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; }
-        h2 { color: #38bdf8; margin-bottom: 5px; }
-        button { background-color: #0284c7; color: white; border: none; padding: 15px 35px; font-size: 18px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; margin-top: 20px; }
-        button:hover { background-color: #0369a1; transform: scale(1.02); }
-        .result { margin-top: 25px; padding: 20px; background: #0f172a; border-radius: 8px; display: none; text-align: left; border-left: 5px solid #38bdf8; }
-        .result p { margin: 8px 0; font-size: 16px; }
-        .error { color: #f43f5e; font-weight: bold; margin-top: 15px; }
-        .success { color: #10b981; margin-top: 15px; font-size: 14px; }
+        /* Khu vực nút hệ thống Đăng nhập / Đăng ký ẩn gọn bên phải */
+        .auth-zone { text-align: right; max-width: 650px; margin: 0 auto 10px auto; padding-right: 5px; }
+        .auth-zone a { color: #94a3b8; text-decoration: none; font-size: 13px; cursor: pointer; transition: 0.2s; }
+        .auth-zone a:hover { color: #38bdf8; }
 
-        /* Giao diện khung điền thông tin (Modal Popup) */
-        .modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); }
-        .modal-content { background-color: #1e293b; margin: 15% auto; padding: 25px; border: 1px solid #475569; width: 90%; max-width: 360px; border-radius: 12px; text-align: left; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3); }
-        .modal h3 { margin-top: 0; color: #38bdf8; }
-        .close { float: right; font-size: 24px; font-weight: bold; color: #94a3b8; cursor: pointer; }
-        .close:hover { color: #f8fafc; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-size: 14px; color: #94a3b8; }
-        .form-group input { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #475569; background-color: #0f172a; color: #f8fafc; box-sizing: border-box; font-size: 15px; }
-        .form-group input:focus { border-color: #38bdf8; outline: none; }
-        .btn-submit { width: 100%; background-color: #10b981; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 5px; }
-        .btn-submit:hover { background-color: #059669; }
-        .form-error { color: #f43f5e; font-size: 13px; margin-top: 5px; display: none; font-weight: 500; }
+        /* Khung danh sách các Mục sản phẩm */
+        .list-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Từng thẻ hàng hóa / Mod Item */
+        .mod-item {
+            background: #ffffff;
+            color: #1e293b;
+            border-radius: 18px;
+            padding: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+        .mod-item:last-child { margin-bottom: 0; }
+        .mod-avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid #f1f5f9;
+        }
+        .mod-info { flex: 1; }
+        .mod-name { font-size: 15px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0; }
+        .mod-desc { font-size: 11px; color: #64748b; margin: 0 0 12px 0; font-weight: 500; }
+        
+        /* Cụm nút hành động bên dưới mỗi thẻ */
+        .mod-actions { display: flex; gap: 8px; }
+        .btn-download {
+            flex: 1;
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .btn-download:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-key {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            padding: 0 14px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-key:hover { background: #e2e8f0; color: #0f172a; }
+
+        /* Hộp thoại thông báo trúng thưởng ngẫu nhiên */
+        .result-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            display: none;
+            color: #e0f2fe;
+            font-size: 14px;
+        }
+
+        /* Giao diện Popup đăng ký / đăng nhập */
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); }
+        .modal-content { background: #1e293b; margin: 30% auto; padding: 25px; border: 1px solid #334155; width: 85%; max-width: 340px; border-radius: 16px; text-align: left; }
+        .modal h3 { margin: 0 0 15px 0; color: #38bdf8; font-size: 18px; }
+        .close { float: right; font-size: 20px; color: #64748b; cursor: pointer; }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; margin-bottom: 6px; font-size: 13px; color: #94a3b8; }
+        .form-group input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box; }
+        .btn-submit { width: 100%; background: #0284c7; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 5px; }
+        .form-error { color: #f43f5e; font-size: 12px; margin-top: 5px; display: none; }
     </style>
 </head>
 <body>
 
-<!-- Nút Đăng nhập / Đăng ký góc trái -->
-<div class="auth-buttons">
-    <a onclick="openModal('login')">Đăng nhập</a>
-    <span>/</span>
-    <a onclick="openModal('register')">Đăng ký</a>
-</div>
-
-<!-- Khung Form điền thông tin chung cho cả 2 tính năng -->
-<div id="authModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h3 id="modalTitle">Đăng ký thành viên</h3>
-        
-        <div class="form-group">
-            <label for="username">Tên tài khoản:</label>
-            <input type="text" id="username" placeholder="Nhập tên tài khoản...">
-        </div>
-        
-        <div class="form-group">
-            <label for="password">Mật khẩu:</label>
-            <input type="password" id="password" placeholder="Nhập mật khẩu...">
-            <div id="validationError" class="form-error"></div>
-        </div>
-        
-        <button class="btn-submit" id="btnSubmit" onclick="xuLyForm()">Xác nhận</button>
+    <!-- Khu vực tài khoản hệ thống -->
+    <div class="auth-zone">
+        <a onclick="openModal('login')">Đăng nhập</a> <span style="color:#334155">|</span> <a onclick="openModal('register')">Đăng ký</a>
     </div>
-</div>
 
-<div class="container">
-    <h2>🎉 VÒNG QUAY RANDOM ACC LQ 🎉</h2>
-    <p style="color: #94a3b8;">Bấm nút bên dưới để nhận tài khoản ngẫu nhiên từ kho</p>
-    <button onclick="quayRandom()">BẮT ĐẦU RANDOM</button>
-
-    <div id="ketQua" class="result">
-        <p><strong>👤 Tài khoản:</strong> <span id="txtTaiKhoan" style="color: #38bdf8; font-family: monospace; font-size: 18px;"></span></p>
-        <p><strong>🔑 Mật khẩu:</strong> <span id="txtMatKhau" style="color: #f43f5e; font-family: monospace; font-size: 18px;"></span></p>
+    <!-- Thanh tiêu đề dạng Header HUB giống ảnh -->
+    <div class="hub-header">
+        <div class="hub-brand">
+            <div class="hub-icon">⚡</div>
+            <div class="hub-title">
+                <h1>NTDShare</h1>
+                <p>Digital Hub</p>
+            </div>
+        </div>
+        <div class="hub-status">
+            <div class="status-badge">• ONLINE</div>
+            <button class="btn-refresh" onclick="window.location.reload()">↻</button>
+        </div>
     </div>
-    <p id="txtThongBao"></p>
-</div>
 
-<script>
-let khoAcc = [
-    { tk: "cuong6bbn", mk: "cuongcvbn123" },
-    { tk: "hoaianh2689", mk: "0584903919Anh" },
-    { tk: "daivipbnvn22", mk: "anhyasuo123" }
-];
+    <!-- Khung Danh sách mục -->
+    <div class="list-container">
+        
+        <!-- Mục số 1: CHẤP TỐ ANDROID -->
+        <div class="mod-item">
+            <img class="mod-avatar" src="https://imgur.com" onerror="this.src='https://placehold.co'">
+            <div class="mod-info">
+                <div class="mod-name">CHẤP TỐ ANDROID</div>
+                <div class="mod-desc">10 vé / 24h ( 1 game k được dồn quá 3 vé )</div>
+                <div class="mod-actions">
+                    <button class="btn-download" onclick="quayRandomAcc('Mục Chấp Tố Android')">📥 Tải Xuống</button>
+                    <button class="btn-key" onclick="alert('Chức năng nhận mã bản quyền đang bảo trì!')">🔑 Get Key</button>
+                </div>
+            </div>
+        </div>
 
-let currentAction = 'register';
+        <!-- Mục số 2: MAP NTD MOD -->
+        <div class="mod-item">
+            <img class="mod-avatar" src="https://imgur.com" onerror="this.src='https://placehold.co'">
+            <div class="mod-info">
+                <div class="mod-name">MAP NTD MOD</div>
+                <div class="mod-desc">HACK MAP - MOD FULL SKIN 3S KHÔNG TRẬN ẢO</div>
+                <div class="mod-actions">
+                    <button class="btn-download" onclick="quayRandomAcc('Mục Map NTD Mod')">📥 Tải Xuống</button>
+                    <button class="btn-key" onclick="alert('Chức năng nhận mã bản quyền đang bảo trì!')">🔑 Get Key</button>
+                </div>
+            </div>
+        </div>
 
-function openModal(action) {
-    currentAction = action;
-    const modal = document.getElementById("authModal");
-    const title = document.getElementById("modalTitle");
-    const btn = document.getElementById("btnSubmit");
-    
-    if (action === 'login') {
-        title.innerText = "Đăng nhập hệ thống";
-        btn.innerText = "Đăng nhập";
-    } else {
-        title.innerText = "Đăng ký thành viên";
-        btn.innerText = "Đăng ký ngay";
-    }
-    
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("validationError").style.display = "none";
-    
-    modal.style.display = "block";
-}
+        <!-- Mục số 3: IOS CHẤP TỐ -->
+        <div class="mod-item">
+            <img class="mod-avatar" src="https://imgur.com" onerror="this.src='https://placehold.co'">
+            <div class="mod-info">
+                <div class="mod-name">IOS CHẤP TỐ</div>
+                <div class="mod-desc">15 vé / 24h - MOD FULL SKIN 3S KHÔNG LỖI</div>
+                <div class="mod-actions">
+                    <button class="btn-download" onclick="quayRandomAcc('Mục IOS Chấp Tố')">📥 Tải Xuống</button>
+                    <button class="btn-key" onclick="alert('Chức năng nhận mã bản quyền đang bảo trì!')">🔑 Get Key</button>
+                </div>
+            </div>
+        </div>
 
-function closeModal() {
-    document.getElementById("authModal").style.display = "none";
-}
+        <!-- Khung hiển thị tài khoản khi bấm nút Tải xuống (Random) -->
+        <div id="ketQuaRandom" class="result-box"></div>
+    </div>
 
-function xuLyForm() {
-    const user = document.getElementById("username").value.trim();
-    const pass = document.getElementById("password").value;
-    const errDiv = document.getElementById("validationError");
-    
-    errDiv.style.display = "none";
-    errDiv.innerText = "";
-
-    if (user.length < 5) {
-        errDiv.innerText = "❌ Tên tài khoản phải từ 5 ký tự trở lên!";
-        errDiv.style.display = "block";
-        return;
-    }
-
-    const hasLower = /[a-z]/.test(pass);
-    const hasUpper = /[A-Z]/.test(pass);
-    const hasUnderscore = /_/.test(pass);
-
-    if (!hasLower || !hasUpper || !hasUnderscore) {
-        errDiv.innerText = "❌ Mật khẩu cần có: chữ viết thường, chữ viết hoa và dấu gạch dưới (_).";
-        errDiv.style.display = "block";
-        return;
-    }
-
-    if (currentAction === 'register') {
-        alert("🎉 Đăng ký tài khoản thành công!");
-    } else {
-        alert("🔓 Đăng nhập thành công!");
-    }
-    closeModal();
-}
-
-function quayRandom() {
-    var resDiv = document.getElementById("ketQua");
-    var thongBao = document.getElementById("txtThongBao");
-
-    if (khoAcc.length === 0) {
-        resDiv.style.display = "none";
-        thongBao.className = "error";
-        thongBao.innerText = "❌ Kho đã hết tài khoản để random!";
-        return;
-    }
-
-    var randomIndex = Math.floor(Math.random() * khoAcc.length);
-    var accTrung = khoAcc[randomIndex];
-
-    document.getElementById("txtTaiKhoan").innerText = accTrung.tk;
-    document.getElementById("txtMatKhau").innerText = accTrung.mk;
-    resDiv.style.display = "block";
-
-    khoAcc.splice(randomIndex, 1);
-    thongBao.className = "success";
-    thongBao.innerText = "ℹ️ Đã lấy 1 acc. Trong kho còn lại: " + khoAcc.length + " acc.";
-}
-
-window.onclick = function(event) {
-    const modal = document.getElementById("authModal");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-
-</body>
-</html>
+    <!-- Hộp thoại Form Điền Đăng ký / Đăng nhập -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            
