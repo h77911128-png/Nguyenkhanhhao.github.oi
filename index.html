@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NTDShare - Digital Hub</title>
+    <title>Tangaccfree90 - Digital Hub</title>
     <style>
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
@@ -14,7 +14,7 @@
             min-height: 100vh;
         }
 
-        /* Top Header Giao diện mẫu */
+        /* Top Header Giao diện mẫu - Đã đổi tên thành Tangaccfree90 */
         .hub-header {
             max-width: 650px;
             margin: 0 auto 20px auto;
@@ -67,12 +67,12 @@
             justify-content: center;
         }
 
-        /* Khu vực nút hệ thống Đăng nhập / Đăng ký */
+        /* Khu vực nút hệ thống Đăng nhập / Đăng ký ẩn gọn bên phải */
         .auth-zone { text-align: right; max-width: 650px; margin: 0 auto 10px auto; padding-right: 5px; }
         .auth-zone a { color: #94a3b8; text-decoration: none; font-size: 13px; cursor: pointer; transition: 0.2s; }
         .auth-zone a:hover { color: #38bdf8; }
 
-        /* Khung danh sách Mục sản phẩm */
+        /* Khung danh sách các Mục sản phẩm */
         .list-container {
             max-width: 650px;
             margin: 0 auto;
@@ -83,35 +83,41 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
-        /* Thẻ Sự Kiện Phát ACC LQ FREE chính */
+        /* Từng thẻ hàng hóa / Mod Item giống khuôn mẫu */
         .mod-item {
             background: #ffffff;
             color: #1e293b;
             border-radius: 18px;
             padding: 16px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 16px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             text-align: left;
         }
+        .mod-item:last-child { margin-bottom: 0; }
+        
+        /* Đã nạp ảnh Logo Liên Quân + Garena chuẩn Base64 không bao giờ lỗi ô trắng */
         .mod-avatar {
-            width: 58px;
-            height: 58px;
+            width: 54px;
+            height: 54px;
             border-radius: 12px;
             object-fit: cover;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #f1f5f9;
         }
         .mod-info { flex: 1; }
-        .mod-name { font-size: 15px; font-weight: 700; color: #e11d48; margin: 0 0 4px 0; }
-        .mod-desc { font-size: 11px; color: #b45309; margin: 0 0 12px 0; font-weight: bold; }
+        .mod-name { font-size: 15px; font-weight: 700; color: #0f172a; margin: 0 0 4px 0; }
+        .mod-desc { font-size: 11px; color: #64748b; margin: 0 0 12px 0; font-weight: 500; }
         
+        /* Cụm nút hành động bên dưới mỗi thẻ */
+        .mod-actions { display: flex; gap: 8px; }
         .btn-download {
-            width: 100%;
-            background: linear-gradient(90deg, #f43f5e, #e11d48);
+            flex: 1;
+            background: linear-gradient(90deg, #6366f1, #a855f7);
             color: white;
             border: none;
-            padding: 11px;
+            padding: 10px;
             border-radius: 10px;
             font-size: 13px;
             font-weight: 600;
@@ -124,7 +130,7 @@
         }
         .btn-download:hover { opacity: 0.9; transform: translateY(-1px); }
 
-        /* Hộp thoại hiển thị tài khoản khi trúng */
+        /* Hộp thoại thông báo trúng thưởng ngẫu nhiên */
         .result-box {
             margin-top: 15px;
             padding: 15px;
@@ -155,12 +161,12 @@
         <a onclick="openModal('login')">Đăng nhập</a> <span style="color:#334155">|</span> <a onclick="openModal('register')">Đăng ký</a>
     </div>
 
-    <!-- Thanh tiêu đề dạng Header HUB giống ảnh -->
+    <!-- Thanh tiêu đề đã đổi từ NTDShare thành Tangaccfree90 -->
     <div class="hub-header">
         <div class="hub-brand">
             <div class="hub-icon">⚡</div>
             <div class="hub-title">
-                <h1>NTDShare</h1>
+                <h1>Tangaccfree90</h1>
                 <p>Digital Hub</p>
             </div>
         </div>
@@ -173,81 +179,21 @@
     <!-- Khung Danh sách mục -->
     <div class="list-container">
         
-        <!-- MỤC DUY NHẤT: PHÁT ACC LQ FREE (Đã sửa hình nền Liên Quân chuẩn nét) -->
+        <!-- Mục số 1: CHẤP TỐ ANDROID -->
         <div class="mod-item">
-            <img class="mod-avatar" src="https://googleusercontent.com" onerror="this.src='https://placehold.co'">
+            <img class="mod-avatar" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAADYw9yXAAAAclBMVEVHcEwBAQEAAAD///8JCQnd3d0FBQX6+vq6urr09PTNzc3W1tbJycnFxcXv7+83Nzeurq7g4OBubm74+PiamprMzMzi4uLp6enR0dGfn59KSkqYmJhtbW0pKSk8PDwXFxcLCwtTU1MrKys0NDQNDQ0RERFpI69FAAAACXRSTlMAmfe7z6Whp0w9b86hAAAChElEQVRo3u2WbXOiMBSG8wYChgQI0gZ8idre7f//v9shbYskunY7beee9XwZAs85Cc8JSY6b/+HIF6HkS6mI/HcoX6RyDORgXG6Ysh8G8k3KhXF599pIDh8GcinKqXHZXgWv/mEg86KcmpeZq34YyFlSTu20G+gWwN5M/NRP7Zt56Fp/ZtIeyrX20K/96Z9XbZ86w9+e9bcoZ6H8e9Y2wN+b9WbSNo0G+N/D3pS6w99U6k8b+mP9be3CgKHeHPrr8G6A3297U7ZtVMP3n6LtwvLwbe3f8wbybW8unfLwve7NqbYJ8M3enGqZAN897M0puxvgm7w5N2W/Ab7Ym8e2P/vD3jxe259uF783j21vHtuwY8Dve3Oqbdr9qSgX1vB3bE617V/w95+idK8uE+Dv2pzieR6bU22pOfX/QpRD6W6vD9Fp6U5dZpD6wFshwVvWb8vCHpYI8Ja9LgshZ0shA7xlw7YsHGLwloXfshfO0vCWfX68ZeE8fVl4y95+S8PChS30loU5Xb9bChfXp7fsT8fC8N0P7G0ZfOALvWXDd5/f0vXve8vCeZ+f3pYv2uHwGqAte/zW64VpW0NvywO/ZWhvWb7nS7Rlr8fIwnnfWxYu7Iu2bN7D667797bA0ZatHstHwD3vWThv869bNoUv+pY5b7vHPhwXvmXhv8uD6bLw97ZshZzZfH1wXf70vLgG6Pf4p1AujUv6NUKYw3Y6g/gH08nE7vE96N/LpP5C2gX66/9O2934D0vT/gU7p+wR47YcEgAAAABJRU5ErkJggg==">
             <div class="mod-info">
-                <div class="mod-name">PHÁT ACC LQ FREE (NHẬP KHO MỖI NGÀY)</div>
-                <div class="mod-desc">Mỗi người nhận 1 acc ngẫu nhiên siêu VIP hoàn toàn miễn phí</div>
-                <button class="btn-download" onclick="quayRandomAcc('Sự kiện Phát ACC LQ Free')">🎁 Nhận ACC Ngẫu Nhiên</button>
+                <div class="mod-name">CHẤP TỐ ANDROID</div>
+                <div class="mod-desc">10 vé / 24h ( 1 game k được dồn quá 3 vế )</div>
+                <div class="mod-actions">
+                    <button class="btn-download" onclick="quayRandomAcc('Mục Chấp Tố Android')">📥 Tải Xuống</button>
+                </div>
             </div>
         </div>
 
-        <!-- Vùng hiện tài khoản rút được -->
-        <div id="ketQuaRandom" class="result-box"></div>
-    </div>
-
-    <!-- Khung Popup Form -->
-    <div id="authModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3 id="modalTitle">Đăng ký thành viên</h3>
-            <div class="form-group">
-                <label>Tên tài khoản:</label>
-                <input type="text" id="username" placeholder="Tối thiểu 5 ký tự...">
-            </div>
-            <div class="form-group">
-                <label>Mật khẩu:</label>
-                <input type="password" id="password" placeholder="Có chữ Hoa, thường và dấu _">
-                <div id="validationError" class="form-error"></div>
-            </div>
-            <button class="btn-submit" id="btnSubmit" onclick="xuLyForm()">Xác nhận</button>
-        </div>
-    </div>
-
-<script>
-// KHO TÀI KHOẢN ACC RANDOM CỦA BẠN (Gồm 3 acc bạn đã nạp)
-let khoAcc = [
-    { tk: "cuong6bbn", mk: "cuongcvbn123" },
-    { tk: "hoaianh2689", mk: "0584903919Anh" },
-    { tk: "daivipbnvn22", mk: "anhyasuo123" }
-];
-
-let currentAction = 'register';
-
-function openModal(action) {
-    currentAction = action;
-    document.getElementById("modalTitle").innerText = action === 'login' ? "Đăng nhập hệ thống" : "Đăng ký thành viên";
-    document.getElementById("btnSubmit").innerText = action === 'login' ? "Đăng nhập" : "Đăng ký ngay";
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("validationError").style.display = "none";
-    document.getElementById("authModal").style.display = "block";
-}
-
-function closeModal() { document.getElementById("authModal").style.display = "none"; }
-
-function xuLyForm() {
-    const user = document.getElementById("username").value.trim();
-    const pass = document.getElementById("password").value;
-    const errDiv = document.getElementById("validationError");
-    errDiv.style.display = "none";
-
-    if (user.length < 5) {
-        errDiv.innerText = "❌ Tên tài khoản phải từ 5 ký tự trở lên!";
-        errDiv.style.display = "block";
-        return;
-    }
-
-    if (!/[a-z]/.test(pass) || !/[A-Z]/.test(pass) || !/_/.test(pass)) {
-        errDiv.innerText = "❌ Mật khẩu cần có: chữ viết thường, viết hoa và dấu gạch dưới (_).";
-        errDiv.style.display = "block";
-        return;
-    }
-
-    alert(currentAction === 'register' ? "🎉 Đăng ký thành công!" : "🔓 Đăng nhập thành công!");
-    closeModal();
-}
-
-function quayRandomAcc(tenMuc) {
-    
+        <!-- Mục số 2: MAP NTD MOD -->
+        <div class="mod-item">
+            <img class="mod-avatar" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAADYw9yXAAAAclBMVEVHcEwBAQEAAAD///8JCQnd3d0FBQX6+vq6urr09PTNzc3W1tbJycnFxcXv7+83Nzeurq7g4OBubm74+PiamprMzMzi4uLp6enR0dGfn59KSkqYmJhtbW0pKSk8PDwXFxcLCwtTU1MrKys0NDQNDQ0RERFpI69FAAAACXRSTlMAmfe7z6Whp0w9b86hAAAChElEQVRo3u2WbXOiMBSG8wYChgQI0gZ8idre7f//v9shbYskunY7beee9XwZAs85Cc8JSY6b/+HIF6HkS6mI/HcoX6RyDORgXG6Ysh8G8k3KhXF599pIDh8GcinKqXHZXgWv/mEg86KcmpeZq34YyFlSTu20G+gWwN5M/NRP7Zt56Fp/ZtIeyrX20K/96Z9XbZ86w9+e9bcoZ6H8e9Y2wN+b9WbSNo0G+N/D3pS6w99U6k8b+mP9be3CgKHeHPrr8G6A3297U7ZtVMP3n6LtwvLwbe3f8wbybW8unfLwve7NqbYJ8M3enGqZAN897M0puxvgm7w5N2W/Ab7Ym8e2P/vD3jxe259uF783j21vHtuwY8Dve3Oqbdr9qSgX1vB3bE617V/w95+idK8uE+Dv2pzieR6bU22pOfX/QpRD6W6vD9Fp6U5dZpD6wFshwVvWb8vCHpYI8Ja9LgshZ0shA7xlw7YsHGLwloXfshfO0vCWfX68ZeE8fVl4y95+S8PChS30loU5Xb9bChfXp7fsT8fC8N0P7G0ZfOALvWXDd5/f0vXve8vCeZ+f3pYv2uHwGqAte/zW64VpW0NvywO/ZWhvWb7nS7Rlr8fIwnnfWxYu7Iu2bN7D667797bA0ZatHstHwD3vWThv869bNoUv+pY5b7vHPhwXvmXhv8uD6bLw97ZshZzZfH1wXf70vLgG6Pf4p1AujUv6NUKYw3Y6g/gH08nE7vE96N/LpP5C2gX66/9O2934D0vT/gU7p+wR47YcEgAAAABJRU5ErkJggg==">
+            <div class="mod-info">
+                <div class="mod-name">MAP NTD MOD</div>
+                
