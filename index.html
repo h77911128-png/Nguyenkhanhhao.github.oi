@@ -31,7 +31,6 @@
 </div>
 
 <script>
-// KHO TÀI KHOẢN ĐÃ CẬP NHẬT (Hiện tại có 3 acc)
 let khoAcc = [
     { tk: "cuong6bbn", mk: "cuongcvbn123" },
     { tk: "hoaianh2689", mk: "0584903919Anh" },
@@ -39,8 +38,8 @@ let khoAcc = [
 ];
 
 function quayRandom() {
-    const resDiv = document.getElementById("ketQua");
-    const thongBao = document.getElementById("txtThongBao");
+    var resDiv = document.getElementById("ketQua");
+    var thongBao = document.getElementById("txtThongBao");
 
     if (khoAcc.length === 0) {
         resDiv.style.display = "none";
@@ -49,8 +48,8 @@ function quayRandom() {
         return;
     }
 
-    const randomIndex = Math.floor(Math.random() * khoAcc.length);
-    const accTrung = khoAcc[randomIndex];
+    var randomIndex = Math.floor(Math.random() * khoAcc.length);
+    var accTrung = khoAcc[randomIndex];
 
     document.getElementById("txtTaiKhoan").innerText = accTrung.tk;
     document.getElementById("txtMatKhau").innerText = accTrung.mk;
@@ -58,38 +57,7 @@ function quayRandom() {
 
     khoAcc.splice(randomIndex, 1);
     thongBao.className = "success";
-    thongBao.innerText = `ℹ️ Đã lấy 1 acc. Trong kho còn lại: ${khoAcc.length} acc.`;
-}
-</script>
-
-</body>
-</html>
-
-
-function quayRandom() {
-    const resDiv = document.getElementById("ketQua");
-    const thongBao = document.getElementById("txtThongBao");
-
-    if (khoAcc.length === 0) {
-        resDiv.style.display = "none";
-        thongBao.className = "error";
-        thongBao.innerText = "❌ Kho đã hết tài khoản để random!";
-        return;
-    }
-
-    // Chọn ngẫu nhiên tài khoản
-    const randomIndex = Math.floor(Math.random() * khoAcc.length);
-    const accTrung = khoAcc[randomIndex];
-
-    // Chỉ hiển thị tài khoản và mật khẩu
-    document.getElementById("txtTaiKhoan").innerText = accTrung.tk;
-    document.getElementById("txtMatKhau").innerText = accTrung.mk;
-    resDiv.style.display = "block";
-
-    // Xóa acc đã trúng
-    khoAcc.splice(randomIndex, 1);
-    thongBao.className = "success";
-    thongBao.innerText = `ℹ️ Đã lấy 1 acc. Trong kho còn lại: ${khoAcc.length} acc.`;
+    thongBao.innerText = "ℹ️ Đã lấy 1 acc. Trong kho còn lại: " + khoAcc.length + " acc.";
 }
 </script>
 
