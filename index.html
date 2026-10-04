@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -32,10 +31,40 @@
 </div>
 
 <script>
-// KHO TÀI KHOẢN CỦA BẠN - Đã xóa thông tin note
+// KHO TÀI KHOẢN ĐÃ CẬP NHẬT (Hiện tại có 3 acc)
 let khoAcc = [
-    { tk: "cuong6bbn", mk: "cuongcvbn123" }
+    { tk: "cuong6bbn", mk: "cuongcvbn123" },
+    { tk: "hoaianh2689", mk: "0584903919Anh" },
+    { tk: "daivipbnvn22", mk: "anhyasuo123" }
 ];
+
+function quayRandom() {
+    const resDiv = document.getElementById("ketQua");
+    const thongBao = document.getElementById("txtThongBao");
+
+    if (khoAcc.length === 0) {
+        resDiv.style.display = "none";
+        thongBao.className = "error";
+        thongBao.innerText = "❌ Kho đã hết tài khoản để random!";
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * khoAcc.length);
+    const accTrung = khoAcc[randomIndex];
+
+    document.getElementById("txtTaiKhoan").innerText = accTrung.tk;
+    document.getElementById("txtMatKhau").innerText = accTrung.mk;
+    resDiv.style.display = "block";
+
+    khoAcc.splice(randomIndex, 1);
+    thongBao.className = "success";
+    thongBao.innerText = `ℹ️ Đã lấy 1 acc. Trong kho còn lại: ${khoAcc.length} acc.`;
+}
+</script>
+
+</body>
+</html>
+
 
 function quayRandom() {
     const resDiv = document.getElementById("ketQua");
