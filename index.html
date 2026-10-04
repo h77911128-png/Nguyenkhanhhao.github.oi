@@ -86,7 +86,7 @@ let khoAcc = [
     { tk: "daivipbnvn22", mk: "anhyasuo123" }
 ];
 
-let currentAction = 'register'; // Biến kiểm tra đang bấm Đăng ký hay Đăng nhập
+let currentAction = 'register';
 
 function openModal(action) {
     currentAction = action;
@@ -94,7 +94,6 @@ function openModal(action) {
     const title = document.getElementById("modalTitle");
     const btn = document.getElementById("btnSubmit");
     
-    // Đổi chữ tiêu đề form tùy theo người dùng bấm nút nào
     if (action === 'login') {
         title.innerText = "Đăng nhập hệ thống";
         btn.innerText = "Đăng nhập";
@@ -103,7 +102,6 @@ function openModal(action) {
         btn.innerText = "Đăng ký ngay";
     }
     
-    // Xóa dữ liệu cũ trong ô nhập nếu có
     document.getElementById("username").value = "";
     document.getElementById("password").value = "";
     document.getElementById("validationError").style.display = "none";
@@ -115,7 +113,6 @@ function closeModal() {
     document.getElementById("authModal").style.display = "none";
 }
 
-// Hàm xử lý kiểm tra tài khoản mật khẩu khi bấm nút xác nhận
 function xuLyForm() {
     const user = document.getElementById("username").value.trim();
     const pass = document.getElementById("password").value;
@@ -124,17 +121,15 @@ function xuLyForm() {
     errDiv.style.display = "none";
     errDiv.innerText = "";
 
-    // 1. Kiểm tra điều kiện Tên tài khoản (>= 5 ký tự)
     if (user.length < 5) {
         errDiv.innerText = "❌ Tên tài khoản phải từ 5 ký tự trở lên!";
         errDiv.style.display = "block";
         return;
     }
 
-    // 2. Kiểm tra điều kiện Mật khẩu bằng biểu thức Regular Expression
-    const hasLower = /[a-z]/.test(pass);        // Có chữ thường
-    const hasUpper = /[A-Z]/.test(pass);        // Có chữ hoa
-    const hasUnderscore = /_/.test(pass);       // Có dấu gạch dưới
+    const hasLower = /[a-z]/.test(pass);
+    const hasUpper = /[A-Z]/.test(pass);
+    const hasUnderscore = /_/.test(pass);
 
     if (!hasLower || !hasUpper || !hasUnderscore) {
         errDiv.innerText = "❌ Mật khẩu cần có: chữ viết thường, chữ viết hoa và dấu gạch dưới (_).";
@@ -142,7 +137,6 @@ function xuLyForm() {
         return;
     }
 
-    // Nếu vượt qua tất cả các kiểm tra điều kiện thành công
     if (currentAction === 'register') {
         alert("🎉 Đăng ký tài khoản thành công!");
     } else {
@@ -174,7 +168,6 @@ function quayRandom() {
     thongBao.innerText = "ℹ️ Đã lấy 1 acc. Trong kho còn lại: " + khoAcc.length + " acc.";
 }
 
-// Đóng form khi nhấn trượt ra ngoài vùng hộp thoại
 window.onclick = function(event) {
     const modal = document.getElementById("authModal");
     if (event.target == modal) {
