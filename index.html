@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Acc Liên Quân</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #1a1a2e; color: #fff; padding-top: 50px; }
+        .container { max-width: 500px; margin: 0 auto; background: #162447; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        button { background-color: #e43f5a; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 5px; cursor: pointer; transition: 0.2s; }
+        button:hover { background-color: #ff4b6e; }
+        .result { margin-top: 25px; padding: 15px; background: #1f4068; border-radius: 5px; display: none; text-align: left; }
+        .error { color: #ff4b6e; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🎉 VÒNG QUAY RANDOM ACC LQ 🎉</h2>
+    <p>Bấm nút bên dưới để nhận tài khoản ngẫu nhiên từ kho</p>
+    <button onclick="quayRandom()">BẮT ĐẦU RANDOM</button>
+
+    <div id="ketQua" class="result">
+        <p><strong>👤 Tài khoản:</strong> <span id="txtTaiKhoan"></span></p>
+        <p><strong>🔑 Mật khẩu:</strong> <span id="txtMatKhau"></span></p>
+        <p><strong>📝 Chi tiết:</strong> <span id="txtGhiChu"></span></p>
+    </div>
+    <p id="txtThongBao"></p>
+</div>
+
+<script>
+// THAY THẾ HOẶC THÊM HẾT KHO ACC CỦA BẠN VÀO ĐÂY
+let khoAcc = [
+    { tk: "lq_pro_01", mk: "pass123", note: "Acc có Florentino Giám Sát Tinh Hệ" },
+    { tk: "lq_vip_99", mk: "9999999", note: "Acc full tướng, rank Cao Thủ" },
+    { tk: "lq_ga_123", mk: "ga12345", note: "Acc phụ clone test tướng" },
+    { tk: "lq_skin_an", mk: "anhanh1", note: "Acc Nakroth Lôi Quang Sứ" }
+];
+
+function quayRandom() {
+    const resDiv = document.getElementById("ketQua");
+    const thongBao = document.getElementById("txtThongBao");
+
+    if (khoAcc.length === 0) {
+        resDiv.style.display = "none";
+        thongBao.className = "error";
+        thongBao.innerText = "❌ Kho đã hết tài khoản để random!";
+        return;
+    }
+
+    // Chọn ngẫu nhiên index
+    const randomIndex = Math.floor(Math.random() * khoAcc.length);
+    const accTrung = khoAcc[randomIndex];
+
+    // Hiển thị kết quả lên màn hình
+    document.getElementById("txtTaiKhoan").innerText = accTrung.tk;
+    document.getElementById("txtMatKhau").innerText = accTrung.mk;
+    document.getElementById("txtGhiChu").innerText = accTrung.note;
+    resDiv.style.display = "block";
+
+    // Xóa acc vừa trúng khỏi mảng để không bị trùng ở lần bấm sau
+    khoAcc.splice(randomIndex, 1);
+    thongBao.className = "";
+    thongBao.innerText = `ℹ️ Đã lấy 1 acc. Trong kho còn lại: ${khoAcc.length} acc.`;
+}
+</script>
+
+</body>
+</html>
