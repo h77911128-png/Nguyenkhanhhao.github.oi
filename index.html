@@ -4,20 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tangaccfree90 - Digital Hub</title>
+
     <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: linear-gradient(135deg, #090a0f 0%, #15102a 50%, #061626 100%); 
-            color: #f8fafc; 
-            margin: 0; 
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(
+                135deg,
+                #090a0f 0%,
+                #15102a 50%,
+                #061626 100%
+            );
+            color: #f8fafc;
+            margin: 0;
             padding: 20px 10px;
             min-height: 100vh;
         }
 
-        /* Top Header Giao diện chuẩn */
+        /* Đăng nhập / đăng ký */
+        .auth-zone {
+            text-align: right;
+            max-width: 650px;
+            margin: 0 auto 10px;
+            padding-right: 5px;
+        }
+
+        .auth-zone a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .auth-zone a:hover {
+            color: #38bdf8;
+        }
+
+        /* Header */
         .hub-header {
             max-width: 650px;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 20px;
             background: rgba(30, 41, 59, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
@@ -27,229 +57,37 @@
             align-items: center;
             justify-content: space-between;
         }
-        .hub-brand { display: flex; align-items: center; gap: 12px; }
+
+        .hub-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
         .hub-icon {
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             width: 36px;
             height: 36px;
-            border-radius: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
         }
-        .hub-title { text-align: left; }
-        .hub-title h1 { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 0.5px; }
-        .hub-title p { margin: 0; font-size: 10px; color: #94a3b8; text-transform: uppercase; }
-        
-        .hub-status { display: flex; align-items: center; gap: 10px; }
-        .status-badge {
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #10b981;
-            font-size: 10px;
-            font-weight: bold;
-            padding: 4px 10px;
-            border-radius: 20px;
+
+        .hub-title {
+            text-align: left;
+        }
+
+        .hub-title h1 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 700;
             letter-spacing: 0.5px;
         }
-        .btn-refresh {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border-radius: 8px;
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
-        /* Khu vực nút hệ thống Đăng nhập / Đăng ký ẩn gọn bên phải */
-        .auth-zone { text-align: right; max-width: 650px; margin: 0 auto 10px auto; padding-right: 5px; }
-        .auth-zone a { color: #94a3b8; text-decoration: none; font-size: 13px; cursor: pointer; transition: 0.2s; }
-        .auth-zone a:hover { color: #38bdf8; }
-
-        /* Khung danh sách Mục sản phẩm */
-        .list-container {
-            max-width: 650px;
-            margin: 0 auto;
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        /* Thẻ Sự Kiện Phát ACC LQ FREE chính */
-        .mod-item {
-            background: #ffffff;
-            color: #1e293b;
-            border-radius: 18px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            text-align: left;
-        }
-        
-        .mod-avatar {
-            width: 58px;
-            height: 58px;
-            border-radius: 12px;
-            object-fit: cover;
-            border: 2px solid #e2e8f0;
-            flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .mod-info { flex: 1; }
-        .mod-name { font-size: 15px; font-weight: 700; color: #e11d48; margin: 0 0 4px 0; }
-        .mod-desc { font-size: 11px; color: #64748b; margin: 0 0 12px 0; font-weight: 500; }
-        
-        /* Nút nhận tài khoản màu đỏ */
-        .btn-download {
-            width: 100%;
-            background: linear-gradient(90deg, #f43f5e, #e11d48);
-            color: white;
-            border: none;
-            padding: 11px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-        .btn-download:hover { opacity: 0.9; transform: translateY(-1px); }
-
-        /* Hộp thoại thông báo trúng thưởng ngẫu nhiên */
-        .result-box {
-            margin-top: 15px;
-            padding: 18px;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid #22d3ee;
-            border-radius: 16px;
-            display: none;
-            font-size: 15px;
-            text-align: center;
-            line-height: 1.5;
-        }
-        .text-error-custom {
-            color: #f43f5e;
-            font-weight: 600;
-        }
-        .text-success-custom {
-            text-align: left;
-            color: #e0f2fe;
-        }
-
-        /* Giao diện Popup đăng ký / đăng nhập */
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); }
-        .modal-content { background: #1e293b; margin: 30% auto; padding: 25px; border: 1px solid #334155; width: 85%; max-width: 340px; border-radius: 16px; text-align: left; }
-        .modal h3 { margin: 0 0 15px 0; color: #38bdf8; font-size: 18px; }
-        .close { float: right; font-size: 20px; color: #64748b; cursor: pointer; }
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; margin-bottom: 6px; font-size: 13px; color: #94a3b8; }
-        .form-group input { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box; }
-        .btn-submit { width: 100%; background: #0284c7; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 5px; }
-        .form-error { color: #f43f5e; font-size: 12px; margin-top: 5px; display: none; }
-    </style>
-</head>
-<body>
-
-    <!-- Khu vực tài khoản hệ thống -->
-    <div class="auth-zone">
-        <a onclick="openModal('login')">Đăng nhập</a> <span style="color:#334155">|</span> <a onclick="openModal('register')">Đăng ký</a>
-    </div>
-
-    <!-- Thanh tiêu đề Tangaccfree90 ở trên cùng -->
-    <div class="hub-header">
-        <div class="hub-brand">
-            <div class="hub-icon">⚡</div>
-            <div class="hub-title">
-                <h1>Tangaccfree90</h1>
-                <p>Digital Hub</p>
-            </div>
-        </div>
-        <div class="hub-status">
-            <div class="status-badge">• ONLINE</div>
-            <button class="btn-refresh" onclick="window.location.reload()">↻</button>
-        </div>
-    </div>
-
-    <!-- Khung Danh sách mục -->
-    <div class="list-container">
-        
-        <div class="mod-item">
-            <img class="mod-avatar" src="https://imgur.com" onerror="this.src='https://placehold.co'">
-            <div class="mod-info">
-                <div class="mod-name" style="color: #e11d48;">PHÁT ACC LQ FREE (NHẬP KHO MỖI NGÀY)</div>
-                <div class="mod-desc" style="color: #64748b;">Mỗi người nhận 1 acc ngẫu nhiên siêu VIP hoàn toàn miễn phí</div>
-                <button class="btn-download" onclick="quayRandomAcc('Sự kiện Phát ACC LQ Free')">🎁 Nhận ACC Ngẫu Nhiên</button>
-            </div>
-        </div>
-
-        <!-- Vùng hiển thị kết quả nick hoặc thông báo hết acc -->
-        <div id="ketQuaRandom" class="result-box"></div>
-    </div>
-
-    <!-- Khung Popup Đăng ký / Đăng nhập -->
-    <div id="authModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3 id="modalTitle">Đăng ký thành viên</h3>
-            <div class="form-group">
-                <label>Tên tài khoản:</label>
-                <input type="text" id="username" placeholder="Tối thiểu 5 ký tự...">
-            </div>
-            <div class="form-group">
-                <label>Mật khẩu:</label>
-                <input type="password" id="password" placeholder="Có chữ Hoa, thường và dấu _">
-                <div id="validationError" class="form-error"></div>
-            </div>
-            <button class="btn-submit" id="btnSubmit" onclick="xuLyForm()">Xác nhận</button>
-        </div>
-    </div>
-
-<script>
-// KHO TÀI KHOẢN ACC RANDOM CỦA BẠN
-let khoAcc = [
-    { tk: "cuong6bbn", mk: "cuongcvbn123" },
-    { tk: "hoaianh2689", mk: "0584903919Anh" },
-    { tk: "daivipbnvn22", mk: "anhyasuo123" }
-];
-
-let currentAction = 'register';
-
-function openModal(action) {
-    currentAction = action;
-    document.getElementById("modalTitle").innerText = action === 'login' ? "Đăng nhập hệ thống" : "Đăng ký thành viên";
-    document.getElementById("btnSubmit").innerText = action === 'login' ? "Đăng nhập" : "Đăng ký ngay";
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("validationError").style.display = "none";
-    document.getElementById("authModal").style.display = "block";
-}
-
-function closeModal() { document.getElementById("authModal").style.display = "none"; }
-
-function xuLyForm() {
-    const user = document.getElementById("username").value.trim();
-    const pass = document.getElementById("password").value;
-    const errDiv = document.getElementById("validationError");
-    errDiv.style.display = "none";
-
-    if (user.length < 5) {
-        errDiv.innerText = "❌ Tên tài khoản phải từ 5 ký tự trở lên!";
-        errDiv.style.display = "block";
-        return;
-    }
-
-    if (!/[a-z]/.test(pass) || !/[A-Z]/.test(pass) || !/_/.test(pass)) {
-                
+        .hub-title p {
+            margin: 0;
+            font-size: 10px;
+            color: #94a3b8;
